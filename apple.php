@@ -2,8 +2,11 @@
 
 class Apple
 {
-    /** @var private color цвет яблока */
-    const COLORS = array('red', 'yellow', 'green');
+    /** @var private color цвет яблока
+     *  @array константа COLORS
+     *
+     */
+    const COLORS = ['red', 'yellow', 'green'];
 
     private $color;
 
