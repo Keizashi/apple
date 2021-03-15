@@ -25,6 +25,3 @@ class Apple
     }
 
 }
-
-$apple = new Apple();
-var_export($apple);
