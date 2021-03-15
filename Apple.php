@@ -3,16 +3,16 @@
 class Apple
 {
 
-    /** @var array Набор цветов константа */
+    /** @var array набор цветов константа */
     const COLORS = ['red', 'yellow', 'green'];
 
-    /** @var string Цвет яблока */
+    /** @var string цвет яблока */
     private $color;
 
-    /** @var string время появления */
+    /** @var int время появления */
     private $appearanceTimestamp;
 
-    /** @var string время падения */
+    /** @var int время падения */
     private $timeOfFall = null;
 
     /** @var int целостность яблока */
@@ -21,9 +21,10 @@ class Apple
     public function __construct()
     {
         $this->color = self::COLORS[array_rand(self::COLORS, 1)];
-
-        $date = date_create();
-        $this->appearanceTimestamp = date('m/d/Y H:i:s', date_timestamp_get($date));
+        $this->appearanceTimestamp = time();
     }
 
 }
+
+$apple = new Apple();
+var_export($apple);
