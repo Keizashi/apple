@@ -2,12 +2,10 @@
 
 class Apple
 {
-    /** @var string color цвет яблока
-     *  @var array набор цветов константа COLORS
-     *
-     */
+    /** @var array набор цветов константа COLORS */
     const COLORS = ['red', 'yellow', 'green'];
-
+    
+    /**  @var string color цвет яблока */
     private $color;
 
     public function __construct()
