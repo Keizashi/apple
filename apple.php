@@ -2,8 +2,8 @@
 
 class Apple
 {
-    /** @var private color цвет яблока
-     *  @array константа COLORS
+    /** @var string color цвет яблока
+     *  @var array набор цветов константа COLORS
      *
      */
     const COLORS = ['red', 'yellow', 'green'];
