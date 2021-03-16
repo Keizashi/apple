@@ -29,7 +29,6 @@ class Apple
      *
      * @return string
      */
-
     public function showAppleColor(): string
     {
         return $this->color;
@@ -40,7 +39,6 @@ class Apple
      *
      * @return int
      */
-
     public function showAppleIntegrity(): int
     {
         return $this->integrityOfApple;
@@ -49,16 +47,16 @@ class Apple
     /**
      * вернуть состояние яблока
      *
-     * @return string
+     * @return bool
      */
-
-    public function showAppleState(): string
+    public function showAppleState(): bool
     {
         if ($fallTimestamp === null) {
-            $currentState = "яблоко висит на дереве\n";
+            $currentState = true;
         } else {
-            $currentState = "яблоко лежит на земле\n";
+            $currentState = false;
         }
         return $currentState;
     }
 }
+
