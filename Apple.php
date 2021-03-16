@@ -13,7 +13,7 @@ class Apple
     private $appearanceTimestamp;
 
     /** @var int время падения */
-    private $timeOfFall = null;
+    private $fallTimestamp = null;
 
     /** @var int целостность яблока */
     private $integrityOfApple = 100;
