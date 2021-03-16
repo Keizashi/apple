@@ -24,4 +24,33 @@ class Apple
         $this->appearanceTimestamp = time();
     }
 
+    /**
+     * вернуть цвет яблока
+     *
+     * @return string
+     */
+    public function showAppleColor(): string
+    {
+        return $this->color;
+    }
+
+    /**
+     * вернуть целостность яблока
+     *
+     * @return int
+     */
+    public function showAppleIntegrity(): int
+    {
+        return $this->integrityOfApple;
+    }
+
+    /**
+     * вернуть состояние яблока
+     *
+     * @return bool
+     */
+    public function showAppleStateofHang(): bool
+    {
+        return $this->fallTimestamp === null;
+    }
 }
