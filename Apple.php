@@ -49,14 +49,8 @@ class Apple
      *
      * @return bool
      */
-    public function showAppleState(): bool
+    public function showAppleStateofHang(): bool
     {
-        if ($fallTimestamp === null) {
-            $currentState = true;
-        } else {
-            $currentState = false;
-        }
-        return $currentState;
+        return $this->fallTimestamp === null;
     }
 }
-
