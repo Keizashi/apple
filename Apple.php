@@ -18,7 +18,8 @@ class Apple
     /** @var int целостность яблока */
     private $integrityOfApple = 100;
 
-    private $stateOfApple = null;
+    /** @var string целостность яблока */
+    private $stateOfApple = '';
 
     public function __construct()
     {
