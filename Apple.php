@@ -18,10 +18,44 @@ class Apple
     /** @var int целостность яблока */
     private $integrityOfApple = 100;
 
+    private $stateOfApple = null;
+
     public function __construct()
     {
         $this->color = self::COLORS[array_rand(self::COLORS, 1)];
         $this->appearanceTimestamp = time();
     }
 
+    /**
+     * вернуть цвет яблока
+     *
+     * @return string
+     */
+
+    public function showAppleColor()
+    {
+        return $this->color;
+    }
+
+    /**
+     * вернуть целостность яблока
+     *
+     * @return int
+     */
+
+    public function showAppleIntegrity()
+    {
+        return $this->integrityOfApple;
+    }
+
+    /**
+     * вернуть состояние яблока
+     *
+     * @return string
+     */
+
+    public function showAppleState()
+    {
+        return $this->stateOfApple;
+    }
 }
