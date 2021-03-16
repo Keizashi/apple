@@ -18,9 +18,6 @@ class Apple
     /** @var int целостность яблока */
     private $integrityOfApple = 100;
 
-    /** @var string целостность яблока */
-    private $stateOfApple = '';
-
     public function __construct()
     {
         $this->color = self::COLORS[array_rand(self::COLORS, 1)];
@@ -33,7 +30,7 @@ class Apple
      * @return string
      */
 
-    public function showAppleColor()
+    public function showAppleColor(): string
     {
         return $this->color;
     }
@@ -44,7 +41,7 @@ class Apple
      * @return int
      */
 
-    public function showAppleIntegrity()
+    public function showAppleIntegrity(): int
     {
         return $this->integrityOfApple;
     }
@@ -55,8 +52,13 @@ class Apple
      * @return string
      */
 
-    public function showAppleState()
+    public function showAppleState(): string
     {
-        return $this->stateOfApple;
+        if ($fallTimestamp === null) {
+            $currentState = "яблоко висит на дереве\n";
+        } else {
+            $currentState = "яблоко лежит на земле\n";
+        }
+        return $currentState;
     }
 }
