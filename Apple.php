@@ -62,8 +62,8 @@ class Apple
         if ($this->fallTimestamp !== null) {
             throw new RuntimeException ("Apple is not on the tree");
 
+        } else {
             $this->fallTimestamp = time();
         }
     }
 }
-
