@@ -72,7 +72,7 @@ class Apple
      *
      * @return int
      */
-    public function eatApple($piece): int
+    public function eatApple($piece): void
     {
         $start = $this->fallTimestamp;
         $end = time();
@@ -80,11 +80,16 @@ class Apple
         $rotTime = round($seconds_diff / 3600);
 
         if ($this->fallTimestamp !== null && $piece <= 100 && $rotTime < 5) {
-            return $this->integrityOfApple -= $piece;
+            $this->integrityOfApple -= $piece;
         } else {
-            throw new RuntimeException ("Better do not eat it");
+            throw new RuntimeException ("Better do not eat it or you just can not");
         }
     }
 }
+
+$apple = new Apple();
+$apple->appleFall();
+$apple->eatApple(25);
+var_export($apple);
 
 
