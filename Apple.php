@@ -53,4 +53,17 @@ class Apple
     {
         return $this->fallTimestamp === null;
     }
+
+    /**
+     * падение яблока с дерева
+     */
+    public function appleFall(): void
+    {
+        if ($this->fallTimestamp !== null) {
+            throw new RuntimeException ("Apple is not on the tree");
+
+        } else {
+            $this->fallTimestamp = time();
+        }
+    }
 }
