@@ -66,4 +66,25 @@ class Apple
             $this->fallTimestamp = time();
         }
     }
+
+    /**
+     * съесть яблоко
+     *
+     * @return int
+     */
+    public function eatApple($piece): int
+    {
+        $start = $this->fallTimestamp;
+        $end = time();
+        $seconds_diff = $end - $start;
+        $rotTime = round($seconds_diff / 3600);
+
+        if ($this->fallTimestamp !== null && $piece <= 100 && $rotTime < 5) {
+            return $this->integrityOfApple -= $piece;
+        } else {
+            throw new RuntimeException ("Better do not eat it");
+        }
+    }
 }
+
+
