@@ -92,5 +92,3 @@ class Apple
 
     }
 }
-
-test;
