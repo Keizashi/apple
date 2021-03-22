@@ -81,7 +81,7 @@ class Apple
 
         if ($this->fallTimestamp === null) {
             throw new RuntimeException ("Do not eat this apple, it is on the tree");
-        } elseif ($piece > 100 || $this->integrityOfApple <= 0) {
+        } elseif ($piece > 100 || $this->integrityOfApple <= 0 || $this->integrityOfApple < $piece) {
             throw new RuntimeException ("You can not eat more than whole apple, or it is already eaten");
         } elseif ($rotTime > 5) {
             throw new RuntimeException ("Do not eat rotten apple");
@@ -90,5 +90,4 @@ class Apple
         }
     }
 }
-
 
