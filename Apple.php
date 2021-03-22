@@ -66,4 +66,28 @@ class Apple
             $this->fallTimestamp = time();
         }
     }
+
+    /**
+     * съесть яблоко
+     *
+     * @return void
+     */
+    public function eatApple($piece): void
+    {
+        $start = $this->fallTimestamp;
+        $end = time();
+        $secondsDiff = $end - $start;
+        $rotTime = round($secondsDiff / 3600);
+
+        if ($this->fallTimestamp === null) {
+            throw new RuntimeException ("Do not eat this apple, it is on the tree");
+        } elseif ($piece > 100 || $this->integrityOfApple <= 0 || $this->integrityOfApple < $piece) {
+            throw new RuntimeException ("You can not eat more than whole apple, or it is already eaten");
+        } elseif ($rotTime > 5) {
+            throw new RuntimeException ("Do not eat rotten apple");
+        } else {
+            $this->integrityOfApple -= $piece;
+        }
+    }
 }
+
