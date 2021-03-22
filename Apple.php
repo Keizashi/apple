@@ -16,7 +16,7 @@ class Apple
     private $fallTimestamp = null;
 
     /** @var int целостность яблока */
-    private $integrityOfApple = 100;
+    private $integrity = 100;
 
     public function __construct()
     {
@@ -29,7 +29,7 @@ class Apple
      *
      * @return string
      */
-    public function showAppleColor(): string
+    public function showColor(): string
     {
         return $this->color;
     }
@@ -39,9 +39,9 @@ class Apple
      *
      * @return int
      */
-    public function showAppleIntegrity(): int
+    public function showIntegrity(): int
     {
-        return $this->integrityOfApple;
+        return $this->integrity;
     }
 
     /**
@@ -49,7 +49,7 @@ class Apple
      *
      * @return bool
      */
-    public function showAppleStateofHang(): bool
+    public function showStateofHang(): bool
     {
         return $this->fallTimestamp === null;
     }
@@ -57,14 +57,14 @@ class Apple
     /**
      * падение яблока с дерева
      */
-    public function appleFall(): void
+    public function fall(): void
     {
         if ($this->fallTimestamp !== null) {
             throw new RuntimeException ("Apple is not on the tree");
 
-        } else {
-            $this->fallTimestamp = time();
         }
+        $this->fallTimestamp = time();
+
     }
 
     /**
@@ -72,7 +72,7 @@ class Apple
      *
      * @return void
      */
-    public function eatApple($piece): void
+    public function eat($piece): void
     {
         $start = $this->fallTimestamp;
         $end = time();
@@ -81,13 +81,14 @@ class Apple
 
         if ($this->fallTimestamp === null) {
             throw new RuntimeException ("Do not eat this apple, it is on the tree");
-        } elseif ($piece > 100 || $this->integrityOfApple <= 0 || $this->integrityOfApple < $piece) {
-            throw new RuntimeException ("You can not eat more than whole apple, or it is already eaten");
-        } elseif ($rotTime > 5) {
-            throw new RuntimeException ("Do not eat rotten apple");
-        } else {
-            $this->integrityOfApple -= $piece;
         }
+        if ($piece > 100 || $this->integrity <= 0 || $this->integrity < $piece) {
+            throw new RuntimeException ("You can not eat more than whole apple, or it is already eaten");
+        }
+        if ($rotTime > 5) {
+            throw new RuntimeException ("Do not eat rotten apple");
+        }
+        $this->integrity -= $piece;
+
     }
 }
-
