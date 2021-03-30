@@ -21,7 +21,7 @@ class m210329_144013_create_table_with_two_properties extends Migration
     /**
      * {@inheritdoc}
      */
-    public function safedown()
+    public function safeDown()
     {
         $this->dropTable('apple');
     }
