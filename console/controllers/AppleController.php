@@ -2,9 +2,6 @@
 
 namespace console\controllers;
 
-use Yii;
-use yii\helpers\Console;
-
 class AppleController extends \yii\console\Controller
 {
 
