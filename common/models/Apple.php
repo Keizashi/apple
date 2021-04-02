@@ -1,10 +1,6 @@
 <?php
 
-namespace common\models;
-
-use yii\db\ActiveRecord;
-
-class Apple extends ActiveRecord
+class Apple
 {
 
     /** @var array набор цветов константа */
