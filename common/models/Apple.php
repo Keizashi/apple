@@ -4,28 +4,16 @@ namespace common\models;
 
 use yii\db\ActiveRecord;
 
+/**
+ * @property string $color цвет яблока
+ * @property integer $appearance_timestamp  время появления
+ * @property integer $fall_timestamp время падения
+ * @property integer $integrity целостность яблока
+ */
 class Apple extends ActiveRecord
 {
-
     /** @var array набор цветов константа */
     const COLORS = ['red', 'yellow', 'green'];
-
-    /** color @var string цвет яблока
-     * appearanceTimestamp @var int время появления
-     * fallTimestamp @var int время падения
-     * integrity @var int целостность яблока
-     */
-
-
-    public function attributeLabels()
-    {
-        return [
-            'appearanceTimestamp' => time(),
-            'fallTimestamp' => 'null',
-            'color' => self::COLORS[array_rand(self::COLORS, 1)],
-            'integrity' => '100',
-        ];
-    }
 
     public function init()
     {

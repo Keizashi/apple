@@ -21,5 +21,6 @@ class AppleController extends Controller
         $apple = new Apple();
         $apple->save();
 
+        echo "создано яблоко с цветом $apple->color с целостностью $apple->integrity и его время появление $apple->appearance_timestamp";
     }
 }
