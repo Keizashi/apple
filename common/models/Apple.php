@@ -10,22 +10,32 @@ class Apple extends ActiveRecord
     /** @var array набор цветов константа */
     const COLORS = ['red', 'yellow', 'green'];
 
-    /** @var string цвет яблока */
-    private $color;
+    /** color @var string цвет яблока
+     * appearanceTimestamp @var int время появления
+     * fallTimestamp @var int время падения
+     * integrity @var int целостность яблока
+     */
 
-    /** @var int время появления */
-    private $appearanceTimestamp;
 
-    /** @var int время падения */
-    private $fallTimestamp = null;
-
-    /** @var int целостность яблока */
-    private $integrity = 100;
-
-    public function __construct()
+    public function attributeLabels()
     {
-        $this->color = self::COLORS[array_rand(self::COLORS, 1)];
-        $this->appearanceTimestamp = time();
+        return [
+            'appearanceTimestamp' => time(),
+            'fallTimestamp' => 'null',
+            'color' => self::COLORS[array_rand(self::COLORS, 1)],
+            'integrity' => '100',
+        ];
+    }
+
+    public function init()
+    {
+        parent::init();
+        if ($this->isNewRecord) {
+            $this->appearance_timestamp = time();
+            $this->integrity = 100;
+            $this->fall_timestamp = null;
+            $this->color = self::COLORS[array_rand(self::COLORS, 1)];
+        }
     }
 
     /**
