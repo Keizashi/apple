@@ -61,11 +61,11 @@ class Apple extends ActiveRecord
      */
     public function fall(): void
     {
-        if ($this->fallTimestamp !== null) {
+        if ($this->fall_timestamp !== null) {
             throw new RuntimeException ("Apple is not on the tree");
 
         }
-        $this->fallTimestamp = time();
+        $this->fall_timestamp = time();
 
     }
 
