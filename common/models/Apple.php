@@ -76,12 +76,12 @@ class Apple extends ActiveRecord
      */
     public function eat($piece): void
     {
-        $start = $this->fallTimestamp;
+        $start = $this->fall_timestamp;
         $end = time();
         $secondsDiff = $end - $start;
         $rotTime = round($secondsDiff / 3600);
 
-        if ($this->fallTimestamp === null) {
+        if ($this->fall_timestamp === null) {
             throw new RuntimeException ("Do not eat this apple, it is on the tree");
         }
         if ($piece > 100 || $this->integrity <= 0 || $this->integrity < $piece) {
