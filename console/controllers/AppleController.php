@@ -23,4 +23,15 @@ class AppleController extends Controller
 
         echo "создано яблоко с цветом $apple->color с целостностью $apple->integrity и его время появление $apple->appearance_timestamp";
     }
+
+    function actionFall($id)
+    {
+        $apple = Apple::find()
+            ->where(['id' => $id])
+            ->one();
+
+        $apple->fall();
+        $apple->save();
+    }
+
 }
