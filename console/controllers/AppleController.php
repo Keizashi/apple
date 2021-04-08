@@ -34,4 +34,13 @@ class AppleController extends Controller
         $apple->save();
     }
 
+    function actionEat($id, $bite)
+    {
+        $apple = Apple::find()
+            ->where(['id' => $id])
+            ->one();
+
+        $apple->eat($bite);
+        $apple->save();
+    }
 }
