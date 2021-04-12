@@ -1,4 +1,5 @@
 <?php
+
 namespace backend\controllers;
 
 use Yii;
@@ -6,6 +7,8 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use yii\helpers\Url;
+use common\models\Apple;
 
 /**
  * Site controller
@@ -27,6 +30,10 @@ class SiteController extends Controller
                     ],
                     [
                         'actions' => ['logout', 'index'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -64,6 +71,25 @@ class SiteController extends Controller
     }
 
     /**
+     * Display color.
+     *
+     * @return string
+     */
+    public function actionColor()
+    {
+        $request = Yii::$app->request;
+        $id = $request->get('id');
+
+        $apple = Apple::find()
+            ->where(['id' => $id])
+            ->one();
+
+        $apple = $apple->color;
+        return $this->render('color', compact('apple'));
+
+    }
+
+    /**
      * Login action.
      *
      * @return string
@@ -98,5 +124,10 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+
+    public function actionCreate()
+    {
+        echo 'Вызван экшн create!';
     }
 }
