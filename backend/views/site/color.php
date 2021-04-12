@@ -1,6 +1,6 @@
 <?php
 
-/* @var $model \common\models\Apple */
+/* @var $apple \common\models\Apple */
 
 ?>
 <h1> <?= $apple->color ?> </h1>
