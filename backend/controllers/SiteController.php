@@ -122,8 +122,4 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
-    public function actionCreate()
-    {
-        echo 'Вызван экшн create!';
-    }
 }
