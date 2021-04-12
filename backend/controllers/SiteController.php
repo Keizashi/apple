@@ -29,11 +29,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                    [
+                        'actions' => ['logout', 'index', 'color'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -84,9 +80,9 @@ class SiteController extends Controller
             ->where(['id' => $id])
             ->one();
 
-        $apple = $apple->color;
-        return $this->render('color', compact('apple'));
-
+        return $this->render('color', [
+            'apple' => $apple,
+        ]);
     }
 
     /**

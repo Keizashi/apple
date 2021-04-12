@@ -3,4 +3,6 @@
 /* @var $model \common\models\Apple */
 
 ?>
-<p> <?= $apple ?> </p>
+<h1> <?= $apple->color ?> </h1>
+
+<p> <?= date('Y-m-d h:i:s') ?> </p>
