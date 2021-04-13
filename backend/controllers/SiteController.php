@@ -1,4 +1,5 @@
 <?php
+
 namespace backend\controllers;
 
 use Yii;
@@ -6,6 +7,8 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use yii\helpers\Url;
+use common\models\Apple;
 
 /**
  * Site controller
@@ -26,7 +29,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'index', 'color'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -61,6 +64,25 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    /**
+     * Display color.
+     *
+     * @return string
+     */
+    public function actionColor()
+    {
+        $request = Yii::$app->request;
+        $id = $request->get('id');
+
+        $apple = Apple::find()
+            ->where(['id' => $id])
+            ->one();
+
+        return $this->render('color', [
+            'apple' => $apple,
+        ]);
     }
 
     /**
@@ -99,4 +121,5 @@ class SiteController extends Controller
 
         return $this->goHome();
     }
+
 }
