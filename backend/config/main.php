@@ -37,14 +37,17 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'enableStrictParsing' => false,
             'rules' => [
+                '/' => 'site/index',
+                'home' => 'site/index',
+                'color/<id:\d+>' => 'site/color',
             ],
         ],
-        */
     ],
     'params' => $params,
 ];
