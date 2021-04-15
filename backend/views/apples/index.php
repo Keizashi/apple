@@ -2,7 +2,7 @@
 
 use yii\grid\GridView;
 
-/* @var $dataProvider  */
+/** @var yii\data\ActiveDataProvider $dataProvider */
 
 echo GridView::widget([
     'dataProvider' => $dataProvider,
