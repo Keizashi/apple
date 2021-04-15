@@ -2,10 +2,9 @@
 
 namespace backend\controllers;
 
-use Yii;
 use yii\web\Controller;
-use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\data\ActiveDataProvider;
 use common\models\Apple;
 
 /**
@@ -23,24 +22,11 @@ class ApplesController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
-                        'allow' => true,
-                    ],
-                    [
                         'actions' => ['index'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
                 ],
-            ],
-        ];
-    }
-
-    public function actions()
-    {
-        return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
             ],
         ];
     }
@@ -52,6 +38,15 @@ class ApplesController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $dataProvider = new ActiveDataProvider([
+            'query' => Apple::find(),
+            'pagination' => [
+                'pageSize' => 30,
+            ],
+        ]);
+
+        return $this->render('index', [
+            'dataProvider' => $dataProvider,
+        ]);
     }
 }
