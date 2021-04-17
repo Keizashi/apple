@@ -26,6 +26,17 @@ class Apple extends ActiveRecord
         }
     }
 
+    public function attributeLabels()
+    {
+        return [
+            'id' => "№ яблока",
+            'color' => 'Цвет',
+            'appearance_timestamp' => 'Время появления',
+            'fall_timestamp' => 'Время падения',
+            'integrity' => 'Целостность в %',
+        ];
+    }
+
     /**
      * вернуть цвет яблока
      *

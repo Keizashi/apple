@@ -22,7 +22,7 @@ class ApplesController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index'],
+                        'actions' => ['index', 'create'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -49,4 +49,12 @@ class ApplesController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+
+    function actionCreate()
+    {
+        $apple = new Apple();
+        $apple->save();
+
+    }
 }
+
