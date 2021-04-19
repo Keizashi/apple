@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use Yii;
 use yii\web\Controller;
 use yii\filters\AccessControl;
 use yii\data\ActiveDataProvider;
@@ -54,7 +55,7 @@ class ApplesController extends Controller
     {
         $apple = new Apple();
         $apple->save();
-
+        return $this->redirect(Yii::$app->request->referrer ?: Yii::$app->homeUrl);
     }
 }
 

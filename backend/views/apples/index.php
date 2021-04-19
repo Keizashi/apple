@@ -2,6 +2,7 @@
 
 use yii\grid\GridView;
 use yii\helpers\Html;
+use yii\bootstrap\Button;
 
 
 /** @var yii\data\ActiveDataProvider $dataProvider */
