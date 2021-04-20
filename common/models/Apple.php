@@ -64,7 +64,7 @@ class Apple extends ActiveRecord
      */
     public function showStateofHang(): bool
     {
-        return $this->fallTimestamp === null;
+        return $this->fall_timestamp === null;
     }
 
     /**
