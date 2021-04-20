@@ -2,8 +2,7 @@
 
 use yii\grid\GridView;
 use yii\helpers\Html;
-use yii\bootstrap\Button;
-
+use yii\helpers\Url;
 
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
@@ -12,4 +11,6 @@ echo GridView::widget([
 
 ]);
 
-echo Html::a('Создать яблоко', ['/create'], ['class' => 'btn btn-primary']);
+echo Html::a('Создать', Url::to(['create']), ['class' => 'btn btn-primary', 'data-method' => 'POST']);
+
+

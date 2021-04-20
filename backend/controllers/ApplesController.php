@@ -7,6 +7,7 @@ use yii\web\Controller;
 use yii\filters\AccessControl;
 use yii\data\ActiveDataProvider;
 use common\models\Apple;
+use yii\filters\VerbFilter;
 
 /**
  * Apples controller
@@ -26,7 +27,14 @@ class ApplesController extends Controller
                         'actions' => ['index', 'create'],
                         'allow' => true,
                         'roles' => ['@'],
+
                     ],
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'create' => ['post'],
                 ],
             ],
         ];
@@ -55,7 +63,8 @@ class ApplesController extends Controller
     {
         $apple = new Apple();
         $apple->save();
-        return $this->redirect(Yii::$app->request->referrer ?: Yii::$app->homeUrl);
+        Yii::$app->session->setFlash('success', "Яблоко создано");
+        return $this->redirect(['index']);
     }
 }
 
