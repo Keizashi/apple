@@ -8,7 +8,7 @@ use yii\db\ActiveRecord;
  * @property string $color цвет яблока
  * @property integer $appearance_timestamp  время появления
  * @property integer $fall_timestamp время падения
- * @property integer $integrity целостность яблока
+ * @property integer $amount целостность яблока
  */
 class Apple extends ActiveRecord
 {
@@ -20,7 +20,7 @@ class Apple extends ActiveRecord
         parent::init();
         if ($this->isNewRecord) {
             $this->appearance_timestamp = time();
-            $this->integrity = 100;
+            $this->amount = 100;
             $this->fall_timestamp = null;
             $this->color = self::COLORS[array_rand(self::COLORS, 1)];
         }
@@ -33,8 +33,8 @@ class Apple extends ActiveRecord
             'color' => 'Цвет',
             'appearance_timestamp' => 'Время появления',
             'fall_timestamp' => 'Время падения',
-            'integrity' => 'Целостность в %',
-        ];
+            'amount' => 'Целостность в %',
+          ];
     }
 
     /**
@@ -54,7 +54,7 @@ class Apple extends ActiveRecord
      */
     public function showIntegrity(): int
     {
-        return $this->integrity;
+        return $this->amount;
     }
 
     /**
@@ -73,7 +73,7 @@ class Apple extends ActiveRecord
     public function fall(): void
     {
         if ($this->fall_timestamp !== null) {
-            throw new RuntimeException ("Apple is not on the tree");
+            throw new \RuntimeException ("Apple is not on the tree");
 
         }
         $this->fall_timestamp = time();
@@ -93,15 +93,15 @@ class Apple extends ActiveRecord
         $rotTime = round($secondsDiff / 3600);
 
         if ($this->fall_timestamp === null) {
-            throw new RuntimeException ("Do not eat this apple, it is on the tree");
+            throw new \RuntimeException ("Do not eat this apple, it is on the tree");
         }
-        if ($piece > 100 || $this->integrity <= 0 || $this->integrity < $piece) {
-            throw new RuntimeException ("You can not eat more than whole apple, or it is already eaten");
+        if ($piece > 100 || $this->amount <= 0 || $this->amount < $piece) {
+            throw new \RuntimeException ("You can not eat more than whole apple, or it is already eaten");
         }
         if ($rotTime > 5) {
-            throw new RuntimeException ("Do not eat rotten apple");
+            throw new \RuntimeException ("Do not eat rotten apple");
         }
-        $this->integrity -= $piece;
+        $this->amount -= $piece;
 
     }
 }
