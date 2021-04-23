@@ -94,6 +94,7 @@ class ApplesController extends Controller
         }
 
         $apple->save();
+        return $this->redirect(['index']);
     }
 
     /**
@@ -115,6 +116,7 @@ class ApplesController extends Controller
         }
 
         $apple->save();
+        return $this->redirect(['index']);
     }
 }
 
