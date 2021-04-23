@@ -89,12 +89,11 @@ class ApplesController extends Controller
         try {
             $apple->fall();
         } catch (\RuntimeException $e) {
-            Yii::$app->session->setFlash('error', "Яблоко уже на земле");
+            Yii::$app->session->setFlash('error', $e->getMessage());
+            return $this->redirect(['index']);
         }
 
         $apple->save();
-        return $this->redirect(['index']);
-
     }
 
     /**
@@ -109,13 +108,13 @@ class ApplesController extends Controller
             ->one();
 
         try {
-            $apple->eat($piece = 25);
+            $apple->eat(25);
         } catch (\RuntimeException $e) {
-            Yii::$app->session->setFlash('error', "Недопустимое действие");
+            Yii::$app->session->setFlash('error', $e->getMessage());
+            return $this->redirect(['index']);
         }
 
         $apple->save();
-        return $this->redirect(['index']);
     }
 }
 

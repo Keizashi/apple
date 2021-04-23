@@ -4,12 +4,13 @@ use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
+
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
 echo GridView::widget([
     'dataProvider' => $dataProvider,
     'columns' => [
-        ['class' => 'yii\grid\SerialColumn'],
+        ['class' => yii\grid\SerialColumn::class],
         'id',
         'color',
         'appearance_timestamp',
