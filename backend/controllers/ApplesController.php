@@ -8,6 +8,8 @@ use yii\filters\AccessControl;
 use yii\data\ActiveDataProvider;
 use common\models\Apple;
 use yii\filters\VerbFilter;
+use yii\helpers\Html;
+use yii\helpers\Url;
 
 /**
  * Apples controller
@@ -24,7 +26,7 @@ class ApplesController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'create'],
+                        'actions' => ['index', 'create', 'bite', 'fall'],
                         'allow' => true,
                         'roles' => ['@'],
 
@@ -47,11 +49,12 @@ class ApplesController extends Controller
      */
     public function actionIndex()
     {
+
         $dataProvider = new ActiveDataProvider([
             'query' => Apple::find(),
             'pagination' => [
-                'pageSize' => 30,
-            ],
+                'pageSize' => 40,
+            ]
         ]);
 
         return $this->render('index', [
@@ -59,11 +62,60 @@ class ApplesController extends Controller
         ]);
     }
 
+    /**
+     * Creates apple
+     *
+     * @return string
+     */
     function actionCreate()
     {
         $apple = new Apple();
         $apple->save();
         Yii::$app->session->setFlash('success', "Яблоко создано");
+        return $this->redirect(['index']);
+    }
+
+    /**
+     * Fall apple
+     *
+     * @return string
+     */
+    function actionFall($id)
+    {
+        $apple = Apple::find()
+            ->where(['id' => $id])
+            ->one();
+
+        try {
+            $apple->fall();
+        } catch (\RuntimeException $e) {
+            Yii::$app->session->setFlash('error', $e->getMessage());
+            return $this->redirect(['index']);
+        }
+
+        $apple->save();
+        return $this->redirect(['index']);
+    }
+
+    /**
+     * Biteoff apple
+     *
+     * @return string
+     */
+    function actionBite($id)
+    {
+        $apple = Apple::find()
+            ->where(['id' => $id])
+            ->one();
+
+        try {
+            $apple->eat(25);
+        } catch (\RuntimeException $e) {
+            Yii::$app->session->setFlash('error', $e->getMessage());
+            return $this->redirect(['index']);
+        }
+
+        $apple->save();
         return $this->redirect(['index']);
     }
 }

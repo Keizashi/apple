@@ -48,6 +48,9 @@ return [
                 'color/<id:\d+>' => 'site/color',
                 'apples' => 'apples/index',
                 'create' => 'apples/create',
+                'bite' => 'apples/bite',
+                'fall' => 'apples/fall',
+
             ],
         ],
     ],
