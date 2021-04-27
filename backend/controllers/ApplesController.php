@@ -8,8 +8,6 @@ use yii\filters\AccessControl;
 use yii\data\ActiveDataProvider;
 use common\models\Apple;
 use yii\filters\VerbFilter;
-use yii\helpers\Html;
-use yii\helpers\Url;
 
 /**
  * Apples controller
@@ -49,7 +47,6 @@ class ApplesController extends Controller
      */
     public function actionIndex()
     {
-
         $dataProvider = new ActiveDataProvider([
             'query' => Apple::find(),
             'pagination' => [
@@ -119,4 +116,3 @@ class ApplesController extends Controller
         return $this->redirect(['index']);
     }
 }
-
