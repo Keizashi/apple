@@ -104,4 +104,16 @@ class Apple extends ActiveRecord
         $this->amount -= $piece;
 
     }
+
+    /**
+     * удалить съеденное яблоко
+     * @inheritDoc
+     */
+    public function afterSave($insert, $changedAttributes)
+    {
+        parent::afterSave($insert, $changedAttributes);
+        if ($this->amount <= 0) {
+            $this->delete();
+        }
+    }
 }
