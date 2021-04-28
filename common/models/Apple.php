@@ -112,7 +112,7 @@ class Apple extends ActiveRecord
     public function afterSave($insert, $changedAttributes)
     {
         parent::afterSave($insert, $changedAttributes);
-        if ($this->amount < 1) {
+        if ($this->amount <= 1) {
             $this->delete();
         }
     }
