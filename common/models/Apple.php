@@ -69,6 +69,8 @@ class Apple extends ActiveRecord
 
     /**
      * падение яблока с дерева
+     *
+     * @return void
      */
     public function fall(): void
     {
@@ -107,6 +109,7 @@ class Apple extends ActiveRecord
 
     /**
      * удалить съеденное яблоко
+     *
      * @inheritDoc
      */
     public function afterSave($insert, $changedAttributes)
